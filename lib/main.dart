@@ -473,14 +473,21 @@ class _MyHomePageState extends State<MyHomePage> {
 
 
   void _moveToProductDetailScreen(context, data, bool isSearchedItem) {
-    Navigator.of(context).push(
-      MaterialPageRoute(
-        builder: (ctx) =>
-            ProductDetail(
-              myProduct: data,
-              isFromSearch: isSearchedItem,
-            ),
-      ),
-    );
-  }
+  Navigator.of(context).push(
+    MaterialPageRoute(
+      builder: (ctx){
+        if(isSearchedItem){
+          return  ProductDetail(
+            productDetail: data,
+            isFromSearch: isSearchedItem,
+          );
+        }
+          return  ProductDetail(
+            myProduct: data,
+            isFromSearch: isSearchedItem,
+          );
+      }
+    ),
+  );
+}
 }
